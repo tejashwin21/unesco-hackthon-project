@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="quizz.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <title class="fw-bold" >INFOSPHERE</title>
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <div class="home">
+        <header>
+            <nav class="navbar navbar-expand-md navbar-light fixed-top">
+                <div class="container-xxl">
+                    <a href="#" class="navbar-brand">
+                    <div class="nav-name container">
+                        <img class="img-fluid" src="images/logo-blue.svg"> 
+                        <h2 class="fw-bold m-3">INFOSPHERE</h2>
+                    </div> 
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main-nav">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse justify-content-end" id="main-nav">
+                        <ul class="navbar-nav">
+                            <ul class="navbar-nav">
+                                <li class="nav-item ">
+                                    <a class="nav-link" href="./index.html">Home</a>
+                                </li>
+                                <li class="nav-item active">
+                                    <a class="nav-link" href="./qizz.html">MIL Quizz</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="./chat.html">Chat</a>
+                                </li>
+                                <li class="nav-item ">
+                                    <a class="nav-link" href="./NewsChecker.html">News checker</a>
+                                </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+         
+         
+        <div class="container top">
+            <h1 class="fw-bold mb-4" >Digital Literacy Quiz</h1>
+            <form id="quizForm"></form>
+            <button id="submitQuiz" class="btn btn-primary mt-4">Submit Quiz</button>
+            <div id="quizResult" class="mt-4"></div>
+        </div>
+        
+        <script>
+            const quizData = {
+                "quiz": [
+                    {
+                        "question": "Which of the following is a sign of fake news?",
+                        "options": ["Clear source with references", "Exaggerated headlines", "Balanced viewpoints"],
+                        "correctAnswer": 1,
+                        "feedback": "Exaggerated headlines are often a sign of fake news."
+                    },
+                    {
+                        "question": "What should you do before sharing a news article?",
+                        "options": ["Read only the headline", "Verify the facts in the article", "Share it immediately if it aligns with your views"],
+                        "correctAnswer": 1,
+                        "feedback": "Always verify facts before sharing a news article."
+                    },
+                    {
+                        "question": "Which of these websites is more likely to be credible?",
+                        "options": ["A blog with no sources", "A government website", "A social media post"],
+                        "correctAnswer": 1,
+                        "feedback": "Government websites are often more reliable because they provide official information."
+                    },
+                    {
+                        "question": "How can you verify if an image posted online is real?",
+                        "options": ["Trust your instincts", "Use reverse image search", "Look at the number of likes the image has"],
+                        "correctAnswer": 1,
+                        "feedback": "Reverse image search is a powerful tool to verify if an image has been altered or taken out of context."
+                    },
+                    {
+                        "question": "What is 'clickbait'?",
+                        "options": ["An article with a misleading title designed to attract clicks", "A secure website for banking", "A blog post about fishing"],
+                        "correctAnswer": 0,
+                        "feedback": "Clickbait uses sensational headlines to attract clicks, often leading to misleading or low-quality content."
+                    },
+                    {
+                        "question": "Why is it important to check the date of a news article?",
+                        "options": ["To know if it is still relevant", "To see if it was posted in the future", "To see how many likes it has"],
+                        "correctAnswer": 0,
+                        "feedback": "Always check the date to make sure the information is still accurate and relevant."
+                    },
+                    {
+                        "question": "What should you do if you come across hate speech online?",
+                        "options": ["Ignore it", "Report it to the platform", "Join in the discussion"],
+                        "correctAnswer": 1,
+                        "feedback": "Reporting hate speech helps reduce harm and keep online spaces safe."
+                    },
+                    {
+                        "question": "What does 'misinformation' mean?",
+                        "options": ["Accidentally sharing false information", "Sharing accurate information", "Intentionally spreading false information"],
+                        "correctAnswer": 0,
+                        "feedback": "Misinformation refers to false information shared unintentionally."
+                    },
+                    {
+                        "question": "How can you recognize an advertisement posing as news?",
+                        "options": ["Look for a disclaimer like 'sponsored' or 'ad'", "Ignore the content", "Check the number of shares"],
+                        "correctAnswer": 0,
+                        "feedback": "Advertisements often include disclaimers such as 'sponsored' or 'ad' to indicate their purpose."
+                    },
+                    {
+                        "question": "What does 'deepfake' technology do?",
+                        "options": ["Alters video or audio content to create false realities", "Creates high-quality photos", "Makes web pages load faster"],
+                        "correctAnswer": 0,
+                        "feedback": "Deepfake technology manipulates video or audio to make it appear real when it's fake."
+                    },
+                    {
+                        "question": "Why is it important to diversify your news sources?",
+                        "options": ["To find content you like", "To get a broader perspective and avoid bias", "To read faster"],
+                        "correctAnswer": 1,
+                        "feedback": "Reading news from multiple sources helps you get a broader and more balanced perspective."
+                    },
+                    {
+                        "question": "Which of the following is an example of cyberbullying?",
+                        "options": ["Sending someone a compliment", "Spreading false rumors about someone online", "Liking someone’s post"],
+                        "correctAnswer": 1,
+                        "feedback": "Spreading false rumors is a form of cyberbullying, and it can cause harm to individuals."
+                    },
+                    {
+                        "question": "Why is it important to use two-factor authentication?",
+                        "options": ["It makes logging in faster", "It adds an extra layer of security", "It automatically updates your password"],
+                        "correctAnswer": 1,
+                        "feedback": "Two-factor authentication adds an additional layer of protection to your accounts."
+                    },
+                    {
+                        "question": "What should you do if you receive an email asking for your password?",
+                        "options": ["Reply immediately", "Ignore it", "Report it as phishing"],
+                        "correctAnswer": 2,
+                        "feedback": "Report the email as phishing because legitimate services will never ask for your password via email."
+                    },
+                    {
+                        "question": "What is 'confirmation bias'?",
+                        "options": ["Only believing information that confirms your existing beliefs", "Always checking multiple sources", "Ignoring all opinions"],
+                        "correctAnswer": 0,
+                        "feedback": "Confirmation bias is when people tend to believe information that supports their pre-existing opinions."
+                    }
+                ]
+            };
+        
+            const quizForm = document.getElementById('quizForm');
+        
+            // Render Quiz Questions
+            quizData.quiz.forEach((q, index) => {
+                let questionHtml = `
+                    <div class="form-group">
+                        <h4>Question ${index + 1}: ${q.question}</h4>`;
+                
+                q.options.forEach((option, optionIndex) => {
+                    questionHtml += `
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="q${index}" value="${optionIndex}">
+                            <label class="form-check-label">${option}</label>
+                        </div>
+                    `;
+                });
+                
+                questionHtml += `</div>`;
+                quizForm.innerHTML += questionHtml;
+            });
+        
+            // Handle Quiz Submission
+            document.getElementById('submitQuiz').addEventListener('click', function() {
+                let score = 0;
+                let resultHtml = '';
+                
+                quizData.quiz.forEach((q, index) => {
+                    const selectedAnswer = document.querySelector(`input[name="q${index}"]:checked`);
+                    
+                    if (selectedAnswer && parseInt(selectedAnswer.value) === q.correctAnswer) {
+                        score++;
+                        resultHtml += `<p>Question ${index + 1}: Correct! ${q.feedback}</p>`;
+                    } else {
+                        resultHtml += `<p>Question ${index + 1}: Incorrect. ${q.feedback}</p>`;
+                    }
+                });
+        
+                resultHtml += `<h4>Your Score: ${score}/${quizData.quiz.length}</h4>`;
+                document.getElementById('quizResult').innerHTML = resultHtml;
+            });
+        </script>
+        
+
+
+        <script>
+            {
+                "newsDatabase"; [
+                  {
+                    "url": "https://example.com/fake-news-article",
+                    "credibility": "Low",
+                    "bias": "High",
+                    "misinformation": "Yes, multiple misleading claims found."
+                  },
+                  {
+                    "url": "https://example.com/trusted-news-article",
+                    "credibility": "High",
+                    "bias": "Low",
+                    "misinformation": "No misleading claims detected."
+                  }
+                ]
+              }
+              
+        </script>
+
+        <script>
+            {
+                "quiz"; [
+                  {
+                    "question": "Which of the following is a sign of fake news?",
+                    "options": [
+                      "Clear source with references",
+                      "Exaggerated headlines",
+                      "Balanced viewpoints"
+                    ],
+                    "correctAnswer": 1,
+                    "feedback": "Exaggerated headlines are often a sign of fake news."
+                  },
+                  {
+                    "question": "What should you do before sharing a news article?",
+                    "options": [
+                      "Read only the headline",
+                      "Verify the facts in the article",
+                      "Share it immediately if it aligns with your views"
+                    ],
+                    "correctAnswer": 1,
+                    "feedback": "Always verify facts before sharing a news article."
+                  }
+                ]
+              }
+              
+              
+        </script>
+
+
+
+
+        
+        
+        <script src="home.js"></script>
+        </body>
+        <footer class="bg-primary text-white py-4">
+            <div class="container">
+                <!-- Footer Branding -->
+                <div class="row">
+                    <div class="col-md-4">
+                        <h4 class="fw-bold">INFOSPHERE</h4>
+                        <p>Empowering Youth with Media and Information Literacy (MIL).</p>
+                    </div>
+        
+                    <!-- Quick Links Section -->
+                    <div class="col-md-4">
+                        <h5 class="fw-bold">Quick Links</h5>
+                        <ul class="list-unstyled">
+                            <li><a href="#" class="text-white text-decoration-none">Home</a></li>
+                            <li><a href="#" class="text-white text-decoration-none">About</a></li>
+                            <li><a href="#" class="text-white text-decoration-none">Projects</a></li>
+                            <li><a href="#" class="text-white text-decoration-none">Contact Us</a></li>
+                        </ul>
+                    </div>
+        
+                    <!-- Social Media Section -->
+                    <div class="col-md-4">
+                        <h5 class="fw-bold">Follow Us</h5>
+                        <ul class="list-unstyled d-flex">
+                            <li class="me-3"><a href="https://www.facebook.com/unesco/" class="text-white"><i class="fab fa-facebook-f"></i></a></li>
+                            <li class="me-3"><a href="https://x.com/UNESCO" class="text-white"><i class="fab fa-twitter"></i></a></li>
+                            <li class="me-3"><a href="https://www.instagram.com/unesco/" class="text-white"><i class="fab fa-instagram"></i></a></li>
+                            <li><a href="https://www.linkedin.com/company/unesco/" class="text-white"><i class="fab fa-linkedin-in"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+        
+                <!-- Copyright Section -->
+                <div class="row mt-4">
+                    <div class="col text-center">
+                        <p class="mb-0">&copy; 2024 INFOSPHERE | UNESCO Media and Information Literacy</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        </div>
+        </html>
